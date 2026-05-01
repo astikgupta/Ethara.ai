@@ -36,7 +36,7 @@ const Signup = () => {
 
         <div className="text-center mb-8 relative">
           <h1 className="text-4xl font-black bg-gradient-to-r from-primary-400 to-cyan-400 bg-clip-text text-transparent mb-2">
-            Ethara.ai
+            Ethara.AI
           </h1>
           <p className="text-slate-400">Join our team today</p>
         </div>
