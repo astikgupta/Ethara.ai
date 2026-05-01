@@ -3,8 +3,8 @@
 Ethara.AI is a premium, minimalist full-stack task management platform designed for high-performance teams. It features a sleek, Apple-inspired UI and robust role-based access control.
 
 ## 🚀 Live Demo
-**Frontend:** [Link to be added by user]
-**Backend API:** [Link to be added by user]
+**Frontend:** [https://github.com/astikgupta/Ethara.ai]
+**Backend API:** [etharaai-production-2127.up.railway.app]
 
 ## ✨ Features
 - **Minimalist UI/UX:** Clean, distraction-free design built with Tailwind CSS v4.
