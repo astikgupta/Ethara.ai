@@ -32,4 +32,19 @@ const addMembers = asyncHandler(async (req, res) => {
   res.json(project);
 });
 
-module.exports = { createProject, getProjects, addMembers };
+const deleteProject = asyncHandler(async (req, res) => {
+  const project = await Project.findById(req.params.id);
+  if (project) {
+    // Delete all tasks associated with this project
+    const Task = require('../models/Task');
+    await Task.deleteMany({ projectId: req.params.id });
+    
+    await project.deleteOne();
+    res.json({ message: 'Project and associated tasks removed' });
+  } else {
+    res.status(404);
+    throw new Error('Project not found');
+  }
+});
+
+module.exports = { createProject, getProjects, addMembers, deleteProject };

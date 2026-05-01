@@ -8,7 +8,8 @@ import {
   ArrowRight,
   Loader2,
   Filter,
-  MoreVertical
+  MoreVertical,
+  Trash2
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -33,6 +34,17 @@ const Projects = () => {
       toast.error('Failed to load projects');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this project? All associated tasks will be removed.')) return;
+    try {
+      await api.delete(`/projects/${id}`);
+      toast.success('Project deleted');
+      fetchProjects();
+    } catch (error) {
+      toast.error('Failed to delete project');
     }
   };
 
@@ -90,9 +102,18 @@ const Projects = () => {
                 <div className="w-10 h-10 rounded-xl bg-primary-50 dark:bg-primary-500/10 flex items-center justify-center text-primary-600 border border-primary-100 dark:border-primary-500/20">
                   <Folder size={20} />
                 </div>
-                <button className="text-slate-400 hover:text-slate-600 transition-colors">
-                  <MoreVertical size={18} />
-                </button>
+                {user?.role === 'Admin' ? (
+                  <button 
+                    onClick={() => handleDelete(project._id)}
+                    className="text-slate-400 hover:text-rose-500 transition-colors p-1"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                ) : (
+                  <button className="text-slate-400 hover:text-slate-600 transition-colors">
+                    <MoreVertical size={18} />
+                  </button>
+                )}
               </div>
 
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{project.title}</h3>

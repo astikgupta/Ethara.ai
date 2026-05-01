@@ -2,7 +2,7 @@ import { Droppable } from '@hello-pangea/dnd';
 import TaskCard from './TaskCard';
 import { MoreHorizontal, Plus } from 'lucide-react';
 
-const KanbanColumn = ({ title, tasks, id, onAddTask, showAdd }) => {
+const KanbanColumn = ({ title, tasks, id, onAddTask, showAdd, onDeleteTask }) => {
   return (
     <div className="flex flex-col w-full min-w-[300px] bg-slate-900/30 rounded-3xl border border-slate-800/50 h-fit max-h-full">
       <div className="p-5 flex justify-between items-center">
@@ -27,7 +27,7 @@ const KanbanColumn = ({ title, tasks, id, onAddTask, showAdd }) => {
             }`}
           >
             {tasks.map((task, index) => (
-              <TaskCard key={task._id} task={task} index={index} />
+              <TaskCard key={task._id} task={task} index={index} onDelete={onDeleteTask} />
             ))}
             {provided.placeholder}
             

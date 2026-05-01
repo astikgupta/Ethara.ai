@@ -1,8 +1,10 @@
 import { Draggable } from '@hello-pangea/dnd';
-import { Calendar, User, Clock } from 'lucide-react';
+import { Calendar, User, Trash2 } from 'lucide-react';
 import { format } from 'date-fns';
+import { useAuth } from '../context/AuthContext';
 
-const TaskCard = ({ task, index }) => {
+const TaskCard = ({ task, index, onDelete }) => {
+  const { user } = useAuth();
   const isOverdue = task.dueDate && new Date(task.dueDate) < new Date() && task.status !== 'Done';
 
   return (
@@ -18,6 +20,14 @@ const TaskCard = ({ task, index }) => {
         >
           <div className="flex justify-between items-start mb-3">
             <h4 className="font-semibold text-slate-100 leading-snug">{task.title}</h4>
+            {user?.role === 'Admin' && (
+              <button 
+                onClick={() => onDelete(task._id)}
+                className="text-slate-500 hover:text-rose-500 transition-colors p-1"
+              >
+                <Trash2 size={14} />
+              </button>
+            )}
           </div>
           
           <p className="text-sm text-slate-400 mb-4 line-clamp-2">{task.description}</p>

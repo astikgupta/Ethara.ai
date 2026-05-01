@@ -88,6 +88,17 @@ const TaskBoard = () => {
     }
   };
 
+  const handleDeleteTask = async (id) => {
+    if (!window.confirm('Delete this task?')) return;
+    try {
+      await api.delete(`/tasks/${id}`);
+      toast.success('Task removed');
+      fetchData();
+    } catch (error) {
+      toast.error('Failed to remove task');
+    }
+  };
+
   if (loading) return (
     <div className="flex items-center justify-center h-64">
       <Loader2 className="animate-spin text-primary-500" size={40} />
@@ -164,6 +175,7 @@ const TaskBoard = () => {
                 id={id}
                 title={id}
                 tasks={colTasks}
+                onDeleteTask={handleDeleteTask}
                 onAddTask={(status) => {
                   setNewTask({ ...newTask, status });
                   setShowTaskModal(true);
