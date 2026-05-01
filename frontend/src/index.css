@@ -58,7 +58,7 @@ body {
 
 .card-custom {
   @apply bg-white dark:bg-[#101828] border border-slate-200 dark:border-slate-800 rounded-2xl transition-all duration-200;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .card-custom:hover {

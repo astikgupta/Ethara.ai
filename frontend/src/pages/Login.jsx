@@ -30,7 +30,7 @@ const Login = () => {
       <div className="glass w-full max-w-md p-8 rounded-3xl shadow-2xl relative overflow-hidden">
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary-600/20 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-primary-600/20 rounded-full blur-3xl"></div>
-        
+
         <div className="text-center mb-8 relative">
           <h1 className="text-4xl font-black bg-gradient-to-r from-primary-400 to-cyan-400 bg-clip-text text-transparent mb-2">
             Ethara.ai

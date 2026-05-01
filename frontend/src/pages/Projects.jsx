@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import api from '../utils/api';
-import { 
-  Plus, 
-  Folder, 
-  Calendar, 
-  Users, 
+import {
+  Plus,
+  Folder,
+  Calendar,
+  Users,
   ArrowRight,
   Loader2,
   Filter,
@@ -79,10 +79,10 @@ const Projects = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.length === 0 ? (
-           <div className="col-span-full py-20 text-center border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl">
-              <Folder size={48} className="mx-auto text-slate-300 mb-4" />
-              <p className="text-slate-500 font-medium italic">No projects found. Create one to get started.</p>
-           </div>
+          <div className="col-span-full py-20 text-center border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl">
+            <Folder size={48} className="mx-auto text-slate-300 mb-4" />
+            <p className="text-slate-500 font-medium italic">No projects found. Create one to get started.</p>
+          </div>
         ) : (
           projects.map((project) => (
             <div key={project._id} className="bg-white dark:bg-[#101828] rounded-2xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col hover:border-primary-500/50 transition-all shadow-sm hover:shadow-xl hover:shadow-primary-500/5 group relative overflow-hidden">
@@ -97,7 +97,7 @@ const Projects = () => {
 
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{project.title}</h3>
               <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-6 flex-1 font-medium">{project.description}</p>
-              
+
               <div className="flex items-center justify-between pt-6 border-t border-slate-100 dark:border-slate-800">
                 <div className="flex -space-x-2">
                   {[1, 2, 3].map(i => (

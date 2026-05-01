@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import api from '../utils/api';
-import { 
-  BarChart3, 
-  CheckCircle2, 
-  Clock, 
-  AlertCircle, 
+import {
+  BarChart3,
+  CheckCircle2,
+  Clock,
+  AlertCircle,
   Loader2,
   TrendingUp
 } from 'lucide-react';
@@ -79,7 +79,7 @@ const Dashboard = () => {
         </div>
         <div className="p-12 text-center">
           <div className="w-16 h-16 bg-slate-50 dark:bg-slate-800/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-dashed border-slate-200 dark:border-slate-700">
-             <Clock className="text-slate-400" size={24} />
+            <Clock className="text-slate-400" size={24} />
           </div>
           <p className="text-sm font-medium text-slate-500 italic max-w-xs mx-auto">No recent activities to display. New events will appear here as they happen.</p>
         </div>
