@@ -6,7 +6,8 @@ import {
   LogOut, 
   Users, 
   Moon, 
-  Sun
+  Sun,
+  X
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -46,7 +47,7 @@ const EtharaLogo = () => (
   </svg>
 );
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, setIsOpen }) => {
   const { user, logout } = useAuth();
   const { isDarkMode, toggleTheme } = useTheme();
 
@@ -61,14 +62,27 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="w-60 h-screen sticky top-0 flex flex-col bg-[var(--sidebar-bg)] border-r border-[var(--card-border)] transition-all duration-300">
-      <div className="p-8 pb-10 flex items-center gap-3">
-        <div className="text-slate-900 dark:text-white">
-          <EtharaLogo />
+    <aside className={`
+      fixed inset-y-0 left-0 z-50 w-64 bg-[var(--sidebar-bg)] border-r border-[var(--card-border)] 
+      transition-transform duration-300 transform 
+      ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+      md:translate-x-0 md:static md:flex md:flex-col md:h-screen md:w-60
+    `}>
+      <div className="p-8 pb-10 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="text-slate-900 dark:text-white">
+            <EtharaLogo />
+          </div>
+          <span className="text-2xl font-medium tracking-tight text-slate-900 dark:text-white">
+            Ethara.AI
+          </span>
         </div>
-        <span className="text-2xl font-medium tracking-tight text-slate-900 dark:text-white">
-          Ethara.AI
-        </span>
+        <button 
+          onClick={() => setIsOpen(false)}
+          className="md:hidden p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-zinc-800 text-slate-500"
+        >
+          <X size={20} />
+        </button>
       </div>
 
       <nav className="flex-1 px-4 space-y-1">
@@ -76,6 +90,7 @@ const Sidebar = () => {
           <NavLink
             key={item.name}
             to={item.path}
+            onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
               `flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all ${
                 isActive
